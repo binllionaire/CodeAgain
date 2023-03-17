@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import "../pages.css";
 import Header1 from "../../Common/Header1";
 
 const MainPage = () => {
   const [email, setEmail] = useState("");
+  const [isvisited, setVisited] = useState(useLocation().state?.Visit ?? false);
+  console.log(isvisited)
   var result = false;
   const [emailValid, setEmailValid] = useState(false); //이메일 유효성
-
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if(localStorage.getItem("access_token")!==null && !isvisited){
+      navigate("/login")
+    }
+  }, []);
+  
   const resisterPage = (e) => {
     axios
       .post(
@@ -215,61 +221,7 @@ const MainPage = () => {
           opacity: 60%;
         }
 
-        #b1 {
-          left: 50px;
-          top: -45px;
-          line-height: 0px;
-          transform: rotate(-27deg);
-        }
-
-        #b2 {
-          left: 350px;
-          top: 230px;
-          line-height: 0px;
-          transform: rotate(20deg);
-        }
-
-        #b3 {
-          right: 350px;
-          top: -60px;
-          line-height: 0px;
-          transform: rotate(-27deg);
-        }
-
-        #b4 {
-          right: -20px;
-          top: 100px;
-          line-height: 0px;
-          transform: rotate(-10deg);
-        }
-
-        #b5 {
-          left: -20px;
-          top: 350px;
-          line-height: 0px;
-          transform: rotate(-20deg);
-        }
-
-        #b6 {
-          left: 250px;
-          top: 500px;
-          line-height: 0px;
-          transform: rotate(10deg);
-        }
-
-        #b7 {
-          right: 330px;
-          top: 370px;
-          line-height: 0px;
-          transform: rotate(-30deg);
-        }
-
-        #b8 {
-          right: -20px;
-          top: 500px;
-          line-height: 0px;
-          transform: rotate(30deg);
-        }
+       
 
         #background {
           z-index: -1;

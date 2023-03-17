@@ -52,7 +52,11 @@ const ReviewPage_add = () => {
   const onIntroChange = (e) => {
     setProbIntro(e.target.value);
   };
-  //날짜 체크 리스트 추가
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      probSearch()
+    }
+  };
 
   var type = "";
   //오답노트 추가
@@ -109,14 +113,27 @@ const ReviewPage_add = () => {
       console.error("PROGRAMMERS PARSER ERROR");
     }
   };
+  const getBJ = async (keyword) => {
+   
+    try {
+      return await axios.get(
+        "https://localhost:5000/api/problem/" + encodeURI(keyword)
+      ).then((data)=>{console.log(data)});
+    } catch (error) {
+      console.error("PROGRAMMERS PARSER ERROR");
+    }
+  }
   const parsing = async (keyword) => {
     const html = await getHtml(keyword);
+   // const baekjoon = await getBJ(keyword);
     const $ = cheerio.load(html.data);
+    console.log($("#problem_title").text())
     setProbTitle(
       $(
         "body > div.navbar.navbar-dark.navbar-expand-lg.navbar-application.navbar-breadcrumb > ol > li.active"
       ).text()
     );
+   
     setProbIntro($("#tour2 > div > div > p").text());
     document.getElementById("probSearchTitle").style.display = "block";
   };
@@ -144,6 +161,7 @@ const ReviewPage_add = () => {
   };
   //문제 제목,설명 띄우기
   const showProbName = () => {
+    console.log(probTitle)
     document.getElementById("probName").value =
       "프로그래머스 " + probNum + "번 " + probTitle;
     document.getElementById("probIntro").value = probIntro;
@@ -159,7 +177,7 @@ const ReviewPage_add = () => {
         <hr id="hr2" />
         <div id="main">
           <p className="subtitle">문제검색</p>
-          <div id="probSearch">
+          <div id="probSearch" onKeyPress={handleKeyPress}>
             <input
               id="probNum"
               type="text"
@@ -172,7 +190,7 @@ const ReviewPage_add = () => {
           <br />
           <br />
           <p id="probSearchTitle" onClick={showProbName}>
-            프로그래머스 {probNum} {probTitle}
+             {probTitle !== "" ? "프로그래머스 " + probNum+"번 "+ probTitle : "검색결과가 없습니다"}
           </p>
           <br />
           <div id="disabled">

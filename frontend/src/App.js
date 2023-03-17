@@ -14,7 +14,7 @@ import { PlanAddPage} from "./Pages/index"
 import { PlanViewPage} from "./Pages/index"
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Routes>
       <Route path="/" element={<MainPage />}></Route>
       <Route path="/resister" element={<ResisterPage />}></Route>

@@ -23,7 +23,6 @@ const LoginPage = () => {
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       loginBtnClick()
-      console.log('enter key pressed');
     }
   };
   const loginBtnClick = (e) => {
@@ -171,32 +170,7 @@ const LoginPage = () => {
           border-radius: 10px;
         }
 
-        #p1 {
-          color: #ffffff;
-          font-size: 30px;
-          line-height: 10px;
-        }
-        #p2 {
-          color: #fff;
-          font-size: 45px;
-          line-height: 0px;
-          font-weight: 500;
-        }
-        #p3 {
-          text-decoration: underline;
-          text-underline-position: under;
-          margin-top: 100px;
-          color: #d9d9d9;
-          font-size: 15px;
-        }
-        #p4 {
-          background: none;
-          color: #d9d9d9;
-          font-size: 15px;
-          line-height: 25px;
-          position: relative;
-          z-index: 2;
-        }
+        
         input {
           position: relative;
           z-index: 2;

@@ -5,10 +5,7 @@ export default function Header4() {
   const navigate = useNavigate();
 
   const mainPage = (e) => {
-    console.log("LOGOUT COMPLETE");
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    navigate("/");
+    navigate("/",{ state: { Visit: true } });
   };
 
   const resisterPage = (e) => {

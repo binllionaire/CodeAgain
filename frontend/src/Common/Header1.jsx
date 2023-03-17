@@ -7,8 +7,6 @@ export default function Header1() {
   const email = "";
   const mainPage = (e) => {
     console.log(e);
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
     navigate("/");
   };
   const resisterPage = (e) => {

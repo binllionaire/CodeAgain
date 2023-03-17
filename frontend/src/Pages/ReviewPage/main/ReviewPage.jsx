@@ -109,8 +109,6 @@ const ReviewPage = () => {
           etc
         </label>
 
-        <img id="sort" src="../../img/sort.png" width="20px" alt="sort"/>
-        <p className="type">최신순</p>
         <img
           id="plus"
           onClick={ReviewAddPage}
@@ -273,14 +271,23 @@ const ReviewPage = () => {
         }
         .type {
           margin-top: 15px;
+          margin-bottom : 15px;
           color: #808080;
+          float: left;
+          margin-right: 20px;
+          cursor: pointer;
+          transition : color 0.3s ease;
+        }
+        .type:hover {
+          margin-bottom : 15px;
+          margin-top: 15px;
+          color: #d9d9d9;
           float: left;
           margin-right: 20px;
           cursor: pointer;
         }
 
         #hr2 {
-          margin-top: 15px;
           background-color: #808080;
           height: 0.005em;
           width: 95%;
@@ -419,6 +426,18 @@ const ReviewPage = () => {
           margin: 0.8%;
           cursor: pointer;
           float: left;
+          transition : box-shadow 0.3s ease;
+        }
+        #content:hover {
+          padding: 10px;
+          border-radius: 5px;
+          width: 21.5%;
+          height: 150px;
+          background-color: #212529;
+          margin: 0.8%;
+          cursor: pointer;
+          float: left;
+          box-shadow: 0 0 0 1px #d9d9d9 inset;
         }
         .sticker {
           margin-right: 3px;

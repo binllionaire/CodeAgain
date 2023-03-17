@@ -45,8 +45,6 @@ export default function Header2() {
   const navigate = useNavigate();
   const mainPage = (e) => {
     console.log("LOGOUT COMPLETE");
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
     navigate("/");
   };
   const ReviewPage = (e) => {
